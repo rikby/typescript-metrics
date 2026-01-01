@@ -438,8 +438,8 @@ function detect_tsconfig() {
         # current_dir is PROJECT_ROOT
         echo "."
       else
-        # Get directory name containing tsconfig.json
-        echo "$rel_path"
+        # Get directory name containing tsconfig.json (strip trailing slashes)
+        echo "${rel_path%/}"
       fi
       return 0
     fi
@@ -615,8 +615,8 @@ function format_text_table() {
   fi
 
   # Print header
-  printf "%-60s  %5s  %2s  %3s  %3s\n" "FILE" "MI" "CC" "CoC" "Sts"
-  printf "%-60s  %5s  %2s  %3s  %3s\n" "----" "--" "--" "---" "---"
+  printf "%-60s  %5s  %3s  %3s  %3s\n" "FILE" "MI" "CC" "CoC" "Sts"
+  printf "%-60s  %5s  %3s  %3s  %3s\n" "----" "--" "--" "---" "---"
 
   # Process each file using jq
   local i=0
@@ -650,7 +650,7 @@ function format_text_table() {
       fi
 
       # Print with colored values
-      printf "%-60s  ${mi_color}%5s${RESET}  ${cc_color}%2s${RESET}  ${coc_color}%3s${RESET}  ${status_color}%s${RESET}\n" \
+      printf "%-60s  ${mi_color}%5s${RESET}  ${cc_color}%3s${RESET}  ${coc_color}%3s${RESET}  ${status_color}%s${RESET}\n" \
         "$display_file" "$mi" "$cc" "$coc" "$status"
 
       # Track red zone for exit code
@@ -733,6 +733,9 @@ function main() {
     # Build file list for --include (paths must be relative to tsconfig directory)
     local include_files=""
     for path in "${PATHS[@]}"; do
+      # Strip trailing slashes to handle paths like "server/" correctly
+      path="${path%/}"
+
       # If tsconfig is in subdirectory, adjust path to be relative to it
       if [ "$first_tsconfig" != "." ]; then
         # Strip tsconfig directory prefix from path
