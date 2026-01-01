@@ -737,6 +737,10 @@ function main() {
       if [ "$first_tsconfig" != "." ]; then
         # Strip tsconfig directory prefix from path
         local rel_path="${path#$first_tsconfig/}"
+        # Special case: if path equals tsconfig directory, map to "."
+        if [ "$path" = "$first_tsconfig" ]; then
+          rel_path="."
+        fi
         include_files="$include_files $rel_path"
       else
         # Tsconfig is at root, use path as-is
