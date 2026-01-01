@@ -730,10 +730,18 @@ function main() {
     local first_tsconfig
     first_tsconfig=$(detect_tsconfig "${PATHS[0]}")
 
-    # Build file list for --include (using full paths)
+    # Build file list for --include (paths must be relative to tsconfig directory)
     local include_files=""
     for path in "${PATHS[@]}"; do
-      include_files="$include_files $path"
+      # If tsconfig is in subdirectory, adjust path to be relative to it
+      if [ "$first_tsconfig" != "." ]; then
+        # Strip tsconfig directory prefix from path
+        local rel_path="${path#$first_tsconfig/}"
+        include_files="$include_files $rel_path"
+      else
+        # Tsconfig is at root, use path as-is
+        include_files="$include_files $path"
+      fi
     done
 
     # Use explicit tsconfig.json path to prevent recursive directory scan
