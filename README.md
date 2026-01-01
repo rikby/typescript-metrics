@@ -1,4 +1,4 @@
-# ts-metrics
+# typescript-metrics
 
 TypeScript code metrics CLI tool - A wrapper for TypeStatoscope (tsg) that provides complexity analysis with configurable thresholds, colored output, and CI/CD integration.
 
@@ -14,7 +14,7 @@ TypeScript code metrics CLI tool - A wrapper for TypeStatoscope (tsg) that provi
 
 ## Metrics Analyzed
 
-ts-metrics analyzes three key complexity metrics:
+typescript-metrics analyzes three key complexity metrics:
 
 | Metric | Description | Range |
 |--------|-------------|-------|
@@ -24,23 +24,29 @@ ts-metrics analyzes three key complexity metrics:
 
 ## Installation
 
+**Prerequisite**: This tool requires `typescript-graph` (tsg CLI) as a peer dependency.
+
 ### Global Installation (Recommended)
 
 ```bash
-npm install -g ts-metrics
+npm install -g typescript-metrics typescript-graph
 ```
 
-**Note**: The `tsm` command is available as a shorthand alias for `ts-metrics`. Both commands work identically:
+**Note**: The `tsm` command is available as a shorthand alias for `typescript-metrics`. Both commands work identically:
 
 ```bash
-ts-metrics --help    # Full command name
+typescript-metrics --help    # Full command name
 tsm --help           # Shorthand alias (equivalent)
 ```
 
 ### Using npx (No Installation)
 
 ```bash
-npx ts-metrics [options] [path...]
+# Install tsg globally first (required)
+npm install -g typescript-graph
+
+# Then use npx for typescript-metrics
+npx typescript-metrics [options] [path...]
 # or
 npx tsm [options] [path...]
 ```
@@ -48,7 +54,7 @@ npx tsm [options] [path...]
 ### Local Installation
 
 ```bash
-npm install --save-dev ts-metrics
+npm install --save-dev typescript-metrics typescript-graph
 ```
 
 Then add to your `package.json` scripts:
@@ -56,8 +62,8 @@ Then add to your `package.json` scripts:
 ```json
 {
   "scripts": {
-    "metrics": "ts-metrics",
-    "metrics:all": "ts-metrics --all src/",
+    "metrics": "typescript-metrics",
+    "metrics:all": "typescript-metrics --all src/",
     "tsm": "tsm",
     "tsm:all": "tsm --all src/"
   }
@@ -66,13 +72,13 @@ Then add to your `package.json` scripts:
 
 ## Quick Start
 
-**Tip**: Use `tsm` as a shorthand for `ts-metrics` in all examples below.
+**Tip**: Use `tsm` as a shorthand for `typescript-metrics` in all examples below.
 
 ### Analyze Changed Files (Git Diff Mode)
 
 ```bash
 # Analyze only TypeScript files that have changed
-ts-metrics
+typescript-metrics
 # or
 tsm
 ```
@@ -81,34 +87,34 @@ tsm
 
 ```bash
 # Analyze a directory
-ts-metrics src/
+typescript-metrics src/
 # or
 tsm src/
 
 # Analyze specific files
-ts-metrics src/utils/date.ts src/helpers/format.ts
+typescript-metrics src/utils/date.ts src/helpers/format.ts
 
 # Show all files (disable filtering)
-ts-metrics --all src/
+typescript-metrics --all src/
 ```
 
 ### JSON Output for CI/CD
 
 ```bash
 # Output metrics as JSON
-ts-metrics --json src/ > metrics.json
+typescript-metrics --json src/ > metrics.json
 # or
 tsm --json src/ > metrics.json
 ```
 
 ## Configuration
 
-Create a `.ts-metrics.rc` file in your project root to customize thresholds and tsconfig paths.
+Create a `.typescript-metrics.rc` file in your project root to customize thresholds and tsconfig paths.
 
 ### Sample Configuration
 
 ```bash
-# .ts-metrics.rc
+# .typescript-metrics.rc
 # TypeScript configuration directories
 TSCONFIGS=(
   "."           # Root project
@@ -134,7 +140,7 @@ COC_RED_MIN=21      # Red zone: >= 21
 ### Command Syntax
 
 ```bash
-ts-metrics [OPTIONS] [PATH...]
+typescript-metrics [OPTIONS] [PATH...]
 ```
 
 ### Arguments
@@ -158,43 +164,43 @@ ts-metrics [OPTIONS] [PATH...]
 
 ```bash
 # Analyze only changed TypeScript files
-ts-metrics
+typescript-metrics
 ```
 
 #### Directory Analysis
 
 ```bash
 # Analyze specific directory
-ts-metrics src/
+typescript-metrics src/
 
 # Show all files in directory
-ts-metrics --all src/
+typescript-metrics --all src/
 
 # Show only red-zone files (needs immediate attention)
-ts-metrics --red src/
+typescript-metrics --red src/
 
 # JSON output for LLM consumption
-ts-metrics --json src/
+typescript-metrics --json src/
 
 # JSON output with only red-zone files (for CI gating)
-ts-metrics --red --json src/
+typescript-metrics --red --json src/
 ```
 
 #### File Analysis
 
 ```bash
 # Analyze specific file
-ts-metrics src/utils/date.ts
+typescript-metrics src/utils/date.ts
 
 # Analyze multiple files
-ts-metrics src/utils/date.ts src/helpers/format.ts
+typescript-metrics src/utils/date.ts src/helpers/format.ts
 ```
 
 #### CI/CD Integration
 
 ```bash
 # Fail build if red-zone files detected
-ts-metrics --json src/
+typescript-metrics --json src/
 if [ $? -eq 2 ]; then
   echo "Error: Red-zone files detected!"
   exit 1
@@ -226,7 +232,7 @@ shared/utils/date.ts                                    67.45     5      3    GR
 LLM-friendly JSON output for automated processing:
 
 ```bash
-ts-metrics --json src/
+typescript-metrics --json src/
 ```
 
 Output:
@@ -263,7 +269,7 @@ Output:
 #!/bin/bash
 # Example CI/CD script
 
-ts-metrics --json
+typescript-metrics --json
 EXIT_CODE=$?
 
 if [ $EXIT_CODE -eq 2 ]; then
@@ -323,7 +329,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: npm install -g typescript-graph
-      - run: npx ts-metrics --json
+      - run: npx typescript-metrics --json
         # Exit code 2 (red-zone files) will fail the workflow
 ```
 
@@ -354,7 +360,7 @@ sudo yum install jq
 | Error | Cause | Solution |
 |-------|-------|----------|
 | `tsg: command not found` | TypeScript-Graph not installed | Run `npm install -g typescript-graph` |
-| `Cannot find tsconfig` | Missing tsconfig.json | Create tsconfig.json or update `.ts-metrics.rc` |
+| `Cannot find tsconfig` | Missing tsconfig.json | Create tsconfig.json or update `.typescript-metrics.rc` |
 | `No TypeScript files changed` | No .ts files in git diff | Modify a .ts file or provide explicit path |
 | `Path does not exist` | Invalid path argument | Check path spelling and location |
 
@@ -363,7 +369,7 @@ sudo yum install jq
 ### Find Most Complex Files
 
 ```bash
-ts-metrics --all --json | \
+typescript-metrics --all --json | \
   jq -r '.metrics | sort_by(.maintainabilityIndex) | .[] | "\(.filePath): \(.maintainabilityIndex)"'
 ```
 
@@ -371,7 +377,7 @@ ts-metrics --all --json | \
 
 ```bash
 # Feed metrics to Claude, GPT-4, etc.
-ts-metrics --json src/ | \
+typescript-metrics --json src/ | \
   jq -r '.metrics[] | "File: \(.filePath)\nMI: \(.maintainabilityIndex), CC: \(.cyclomaticComplexity)\n"' | \
   llm "Review these files and suggest refactoring"
 ```
@@ -396,4 +402,4 @@ Contributions welcome! Please open an issue or submit a pull request.
 ## Support
 
 - **Issues**: Report bugs and feature requests on GitHub
-- **Documentation**: See inline help: `ts-metrics --help`
+- **Documentation**: See inline help: `typescript-metrics --help`
