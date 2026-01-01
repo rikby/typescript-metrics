@@ -1,11 +1,10 @@
 {
-  "name": "ts-metrics",
-  "version": "1.0.0",
+  "name": "typescript-metrics",
+  "version": "0.1.0",
   "description": "TypeScript code complexity analyzer with configurable thresholds and LLM-friendly output",
-  "main": "run.sh",
   "bin": {
-    "ts-metrics": "./bin/ts-metrics",
-    "tsm": "./bin/tsm"
+    "ts-metrics": "bin/ts-metrics",
+    "tsm": "bin/tsm"
   },
   "files": [
     "bin/",
@@ -34,15 +33,18 @@
   "engines": {
     "node": ">=14.0.0"
   },
+  "peerDependencies": {
+    "typescript-graph": ">=1.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/ts-metrics.git"
+    "url": "git+https://github.com/rikby/typescript-metrics.git"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/ts-metrics/issues"
+    "url": "https://github.com/rikby/typescript-metrics/issues"
   },
-  "homepage": "https://github.com/yourusername/ts-metrics#readme",
-  "dependencies": {
-    "typescript-graph": "latest"
-  }
+  "homepage": "https://github.com/rikby/typescript-metrics#readme"
 }
