@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# ts-metrics CLI - TypeScript code complexity analyzer
+# This is the main executable for the npm package
+set -euo pipefail
+
+# Get the directory where this script is located
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Run the main script
+exec "$SCRIPT_DIR/../run.sh" "$@"

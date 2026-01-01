@@ -1,0 +1,57 @@
+# Source files and development artifacts
+*.md
+!README.md
+!.ts-metrics.rc.sample
+
+# Test files
+test/
+tests/
+*.test.*
+*.spec.*
+
+# Documentation
+docs/
+*.md
+!README.md
+
+# Build artifacts
+dist/
+build/
+*.log
+
+# Dependency directories
+node_modules/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.travis.yml
+
+# Configuration files
+.eslintrc*
+.prettierrc*
+.editorconfig
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Misc
+*.tmp
+*.temp

@@ -1,0 +1,48 @@
+{
+  "name": "ts-metrics",
+  "version": "1.0.0",
+  "description": "TypeScript code complexity analyzer with configurable thresholds and LLM-friendly output",
+  "main": "run.sh",
+  "bin": {
+    "ts-metrics": "./bin/ts-metrics",
+    "tsm": "./bin/tsm"
+  },
+  "files": [
+    "bin/",
+    "run.sh",
+    ".ts-metrics.rc.sample",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "typescript",
+    "metrics",
+    "complexity",
+    "maintainability",
+    "cyclomatic-complexity",
+    "cognitive-complexity",
+    "code-quality",
+    "static-analysis",
+    "tsg",
+    "typestatoscope"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/ts-metrics.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/ts-metrics/issues"
+  },
+  "homepage": "https://github.com/yourusername/ts-metrics#readme",
+  "dependencies": {
+    "typescript-graph": "latest"
+  }
+}

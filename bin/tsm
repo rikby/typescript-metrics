@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# tsm - Shorthand alias for ts-metrics CLI
+# This is a convenience wrapper that delegates to the main ts-metrics binary
+set -euo pipefail
+
+# Get the directory where this script is located
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Run the main ts-metrics script with all arguments passed through
+exec "$SCRIPT_DIR/ts-metrics" "$@"
