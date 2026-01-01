@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ts-metrics: TypeScript Metrics Collection Script
-# Complexity analyzer wrapper for TypeStatoscope (tsg)
+# Complexity analyzer wrapper for tsg CLI
 # Standalone npm package version
 #
 # Last Modified: 2026-01-01
@@ -44,7 +44,7 @@ function show_help() {
   cat << 'EOF'
 Usage: ts-metrics [OPTIONS] [PATH...]
 
-TypeScript code metrics analyzer using TypeStatoscope (tsg).
+TypeScript code metrics analyzer using tsg CLI.
 
 Arguments:
   PATH        Path(s) to analyze. Can be:

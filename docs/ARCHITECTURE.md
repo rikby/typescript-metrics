@@ -2,7 +2,7 @@
 
 ## Overview
 
-ts-metrics is a wrapper around [TypeStatoscope (tsg)](https://github.com/TypeScript-Graph/TypeStatoscope), a powerful TypeScript code analysis tool.
+ts-metrics is a wrapper around tsg CLI from typescript-graph, a powerful TypeScript code analysis tool.
 
 It provides:
 
@@ -22,7 +22,7 @@ ts-metrics CLI
     │   ├─> Git diff mode (no paths provided)
     │   └─> Path mode (explicit paths)
     │
-    ├─> Run TypeStatoscope (tsg)
+    ├─> Run tsg CLI
     │   └─> Collect metrics (MI, CC, CoC)
     │
     └─> Format output

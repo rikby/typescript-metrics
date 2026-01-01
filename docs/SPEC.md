@@ -2,7 +2,7 @@
 
 ## Overview
 
-**ts-metrics** is a standalone npm/npx CLI tool for TypeScript code metrics analysis. It provides complexity analysis with configurable thresholds and LLM-friendly output by wrapping the TypeStatoscope (tsg) CLI.
+**ts-metrics** is a standalone npm/npx CLI tool for TypeScript code metrics analysis. It provides complexity analysis with configurable thresholds and LLM-friendly output by wrapping the tsg CLI.
 
 ### Purpose
 
@@ -72,7 +72,7 @@ ts-metrics/
 
 ### Dependency
 
-- **TypeStatoscope (tsg)**: Underlying metrics engine
+- **typescript-graph (tsg)**: Underlying metrics engine
   - Installation: `npm install -g typescript-graph`
   - Required for ts-metrics to function
   - Checked at runtime; helpful error message if missing
@@ -466,7 +466,7 @@ ts-metrics --all --json | \
 
 ## Error Handling
 
-### Missing TypeStatoscope (tsg)
+### Missing typescript-graph (tsg)
 
 ```
 Error: tsg CLI is required but not installed.
@@ -584,4 +584,4 @@ function shouldShowFile(status, showRedOnly, showAll) {
 
 - **Issues**: Report bugs at [repository URL]
 - **Documentation**: [repository URL]/blob/main/README.md
-- **TypeStatoscope**: https://github.com/TypeScript-Graph/TypeStatoscope
+- **typescript-graph**: https://github.com/ysk8hori/typescript-graph

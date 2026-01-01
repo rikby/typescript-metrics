@@ -1,6 +1,6 @@
 # typescript-metrics
 
-TypeScript code metrics CLI tool - A wrapper for TypeStatoscope (tsg) that provides complexity analysis with configurable thresholds, colored output, and CI/CD integration.
+TypeScript code metrics CLI tool - A wrapper for tsg CLI that provides complexity analysis with configurable thresholds, colored output, and CI/CD integration.
 
 ## Features
 
@@ -359,7 +359,7 @@ sudo yum install jq
 
 | Error | Cause | Solution |
 |-------|-------|----------|
-| `tsg: command not found` | TypeScript-Graph not installed | Run `npm install -g typescript-graph` |
+| `tsg: command not found` | typescript-graph not installed | Run `npm install -g typescript-graph` |
 | `Cannot find tsconfig` | Missing tsconfig.json | Create tsconfig.json or update `.typescript-metrics.rc` |
 | `No TypeScript files changed` | No .ts files in git diff | Modify a .ts file or provide explicit path |
 | `Path does not exist` | Invalid path argument | Check path spelling and location |
@@ -396,8 +396,7 @@ Contributions welcome! Please open an issue or submit a pull request.
 
 ## Related Projects
 
-- [TypeStatoscope](https://github.com/TypeScript-Graph/TypeStatoscope) - TypeScript code analysis engine
-- [typescript-graph](https://github.com/TypeScript-Graph/typescript-graph) - TypeScript dependency graph tool
+- [typescript-graph](https://github.com/ysk8hori/typescript-graph) - TypeScript code analysis and dependency visualization tool
 
 ## Support
 

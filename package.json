@@ -1,6 +1,6 @@
 {
   "name": "typescript-metrics",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "TypeScript code complexity analyzer with configurable thresholds and LLM-friendly output",
   "bin": {
     "ts-metrics": "bin/ts-metrics",
@@ -26,7 +26,7 @@
     "code-quality",
     "static-analysis",
     "tsg",
-    "typestatoscope"
+    "typescript-graph"
   ],
   "author": "",
   "license": "MIT",

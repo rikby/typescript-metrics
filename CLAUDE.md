@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**ts-metrics** is a standalone npm CLI tool for TypeScript code complexity analysis. It wraps the TypeStatoscope (tsg) CLI to provide intelligent filtering, color-coded output, and CI/CD integration.
+**ts-metrics** is a standalone npm CLI tool for TypeScript code complexity analysis. It wraps the tsg CLI to provide intelligent filtering, color-coded output, and CI/CD integration.
 
 **Key metrics analyzed:**
 - **Maintainability Index (MI)**: 0-100 scale (higher is better)
