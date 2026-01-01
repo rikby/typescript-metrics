@@ -751,6 +751,13 @@ function main() {
 
     # Run tsg for path mode only (git diff mode already set tsg_output)
     tsg_output=$(run_tsg_metrics "$tsg_cmd")
+
+    # Transform filePaths to be relative to project root (not tsconfig directory)
+    if [ "$first_tsconfig" != "." ]; then
+      tsg_output=$(echo "$tsg_output" | jq "
+        .metrics | map(.filePath = \"$first_tsconfig/\" + .filePath) | {metrics: .}
+      ")
+    fi
   fi
 
   # Output
